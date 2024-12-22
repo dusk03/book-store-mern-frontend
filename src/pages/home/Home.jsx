@@ -1,7 +1,7 @@
 import React from 'react'
 import Banner from './Banner'
 import TopSallers from './TopSallers'
-import Recommened from './Recommened'
+import Rec from './Recommened'
 
 function Home() {
   return (
