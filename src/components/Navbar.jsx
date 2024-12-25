@@ -7,6 +7,7 @@ import { FaRegHeart } from "react-icons/fa";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import avatarImg from "../assets/avatar.png";
 import { useSelector } from "react-redux";
+import { useAuth } from "../context/AuthContext";
 const navigation = [
   { name: "Dashbroad", herf: "/dashbroad" },
   { name: "Orders", herf: "/orders" },
@@ -16,8 +17,13 @@ const navigation = [
 function Navbar() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const cartItems = useSelector((state) => state.cart.cartItems);
-  console.log(cartItems);
-  const currentUser = false;
+
+  const { currentUser, logout } = useAuth();
+
+  const handleLogOut = () => {
+    logout();
+  };
+
   return (
     <header className="max-w-screen-xl mx-auto px-4 py-6">
       <nav className="flex justify-between items-center">
@@ -64,6 +70,14 @@ function Navbar() {
                           </Link>
                         </li>
                       ))}
+                      <li>
+                        <button
+                          onClick={handleLogOut}
+                          className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
+                        >
+                          Logout
+                        </button>
+                      </li>
                     </ul>
                   </div>
                 )}
