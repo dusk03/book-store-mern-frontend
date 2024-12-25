@@ -6,7 +6,7 @@ import { useAuth } from "../context/AuthContext";
 
 const Register = () => {
   const [message, setMessage] = useState("");
-  const { registerUser } = useAuth();
+  const { registerUser, signInWithGoogle } = useAuth();
   console.log(registerUser);
   const {
     register,
@@ -23,7 +23,15 @@ const Register = () => {
       setMessage("Please provide a valid email and password");
     }
   };
-  const handleGoogleSignIn = () => {};
+  const handleGoogleSignIn = async () => {
+    try {
+      await signInWithGoogle();
+      navigate("/");
+    } catch (error) {
+      alert("Google sign in failed");
+      console.error(error);
+    }
+  };
 
   return (
     <div className="h-[calc(100vh-120px)] flex items-center justify-center">
