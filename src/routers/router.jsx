@@ -13,6 +13,7 @@ import AdminRoute from "./AdminRoute";
 import AdminLogin from "../components/AdminLogin";
 import Dashboard from "../pages/dashboard/Dashboard";
 import DashboardLayout from "../pages/dashboard/DashboardLayout";
+import ManageBooks from "../pages/dashboard/manageBooks/ManageBooks";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -90,7 +91,11 @@ const router = createBrowserRouter([
       },
       {
         path: "manage-books",
-        element: <AdminRoute>{/* <ManageBooks /> */}</AdminRoute>,
+        element: (
+          <AdminRoute>
+            <ManageBooks />
+          </AdminRoute>
+        ),
       },
     ],
   },
