@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
+import { useCreateOrderMutation } from "../../redux/features/orders/ordersApi";
+import Swal from "sweetalert2";
 
 const CheckoutPage = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
   const { currentUser } = useAuth();
-  console.log(currentUser);
+
+  const [createOrder, { isLoading, error }] = useCreateOrderMutation();
+  const navigate = useNavigate();
   const [isChecked, setIsChecked] = useState(false);
   const totalPrice = cartItems
     .reduce((acc, item) => acc + item.newPrice, 0)
@@ -19,7 +23,7 @@ const CheckoutPage = () => {
     watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     const newOrder = {
       name: data.name,
       email: currentUser?.email,
@@ -33,9 +37,25 @@ const CheckoutPage = () => {
       productIds: cartItems.map((item) => item?._id),
       totalPrice: totalPrice,
     };
-    console.log(newOrder);
+    try {
+      await createOrder(newOrder).unwrap;
+      Swal.fire({
+        title: "Are you sure to place an order?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Confirm!",
+      });
+      navigate("/orders");
+    } catch (error) {
+      console.log(error);
+      alert("Failed to place an order");
+    }
   };
 
+  if (isLoading) return <div>Loading...</div>;
   return (
     <>
       <section>
