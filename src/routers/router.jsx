@@ -8,6 +8,14 @@ import CartPage from "../pages/books/CartPage";
 import CheckoutPage from "../pages/books/CheckoutPage";
 import SingleBook from "../pages/books/SingleBook";
 import PrivateRoute from "./PrivateRoute";
+import OrderPage from "../pages/books/OrderPage";
+import AdminRoute from "./AdminRoute";
+import AdminLogin from "../components/AdminLogin";
+import Dashboard from "../pages/dashboard/Dashboard";
+import DashboardLayout from "../pages/dashboard/DashboardLayout";
+import ManageBooks from "../pages/dashboard/manageBooks/ManageBooks";
+import AddBook from "../pages/dashboard/manageBooks/AddBook";
+import UpdateBook from "../pages/dashboard/manageBooks/UpdateBook";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -19,7 +27,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/orders",
-        element: <h1>Orders</h1>,
+        element: (
+          <PrivateRoute>
+            <OrderPage />,
+          </PrivateRoute>
+        ),
       },
       {
         path: "/about",
@@ -48,6 +60,44 @@ const router = createBrowserRouter([
       {
         path: "/books/:id",
         element: <SingleBook />,
+      },
+    ],
+  },
+  {
+    path: "/admin",
+    element: <AdminLogin />,
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <AdminRoute>
+        <DashboardLayout></DashboardLayout>
+      </AdminRoute>
+    ),
+    children: [
+      {
+        path: "",
+        element: <Dashboard />,
+      },
+      {
+        path: "add-new-book",
+        element: (
+          <AdminRoute>
+            <AddBook />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "edit-book/:id",
+        element: <AdminRoute>{<UpdateBook />}</AdminRoute>,
+      },
+      {
+        path: "manage-books",
+        element: (
+          <AdminRoute>
+            <ManageBooks />
+          </AdminRoute>
+        ),
       },
     ],
   },
