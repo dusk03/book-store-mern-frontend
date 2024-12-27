@@ -9,7 +9,7 @@ import avatarImg from "../assets/avatar.png";
 import { useSelector } from "react-redux";
 import { useAuth } from "../context/AuthContext";
 const navigation = [
-  { name: "Dashbroad", herf: "/dashbroad" },
+  { name: "Dashboard", herf: "/dashboard" },
   { name: "Orders", herf: "/orders" },
   { name: "Cart Page", herf: "/cart" },
   { name: "Check Out", herf: "/checkout" },
