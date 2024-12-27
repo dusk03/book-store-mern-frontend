@@ -149,8 +149,8 @@ const DashboardLayout = () => {
             <button className="inline-flex items-center p-2 hover:bg-gray-100 focus:bg-gray-100 rounded-lg">
               <span className="sr-only">User Menu</span>
               <div className="hidden md:flex md:flex-col md:items-end md:leading-tight">
-                <span className="font-semibold">Grace Simmons</span>
-                <span className="text-sm text-gray-600">Lecturer</span>
+                <span className="font-semibold">Admin</span>
+                <span className="text-sm text-gray-600">Manager</span>
               </div>
               <span className="h-12 w-12 ml-2 sm:ml-3 mr-2 bg-gray-100 rounded-full overflow-hidden">
                 <img
