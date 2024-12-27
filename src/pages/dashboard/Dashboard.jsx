@@ -79,7 +79,7 @@ const Dashboard = () => {
           </div>
           <div>
             <span className="block text-2xl font-bold">
-              ${data?.totalSales}
+              ${data?.totalSales ? data.totalSales.toFixed(2) : 0}
             </span>
             <span className="block text-gray-500">Total Sales</span>
           </div>
@@ -187,7 +187,7 @@ const Dashboard = () => {
             </span>
           </div>
         </div>
-        <div className="row-span-3 bg-white shadow rounded-lg">
+        {/* <div className="row-span-3 bg-white shadow rounded-lg">
           <div className="flex items-center justify-between px-6 py-5 font-semibold border-b border-gray-100">
             <span>Users by average order</span>
             <button
@@ -306,27 +306,7 @@ const Dashboard = () => {
               Chart
             </div>
           </div>
-        </div>
-      </section>
-      <section className="text-right font-semibold text-gray-500">
-        <a href="#" className="text-purple-600 hover:underline">
-          Recreated on Codepen
-        </a>{" "}
-        with{" "}
-        <a
-          href="https://tailwindcss.com/"
-          className="text-teal-400 hover:underline"
-        >
-          Tailwind CSS
-        </a>{" "}
-        by Azri Kahar,{" "}
-        <a
-          href="https://dribbble.com/shots/10711741-Free-UI-Kit-for-Figma-Online-Courses-Dashboard"
-          className="text-purple-600 hover:underline"
-        >
-          original design
-        </a>{" "}
-        made by Chili Labs
+        </div> */}
       </section>
     </>
   );
