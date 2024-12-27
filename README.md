@@ -31,9 +31,6 @@ Web full-stack cho một cửa hàng sách, phát triển bằng cách sử dụ
 - https://github.com/dusk03/book-store-mern-frontend
 - https://github.com/dusk03/book-store-mern-backend
 ### Một số ảnh demo
-- Node.js
-- npm (Node Package Manager)
-- MongoDB
 ![Home](/demo/Home.png)
 ![Footer](/demo/Footer.png)
 ![Cart](/demo/Cart.png)
